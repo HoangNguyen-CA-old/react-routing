@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import { Switch, Route, Link } from 'react-router-dom';
+
+import About from './components/About';
+import Projects from './components/Projects';
+
+let NavLink = styled(Link)`
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  margin: 10px;
+  text-transform: uppercase;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavLink to='/about'>About</NavLink>
+      <NavLink to='/projects'>Projects</NavLink>
+      <Switch>
+        <Route exact path='/about'>
+          <About></About>
+        </Route>
+        <Route exact path='/projects'>
+          <Projects></Projects>
+        </Route>
+      </Switch>
+    </>
   );
 }
 
